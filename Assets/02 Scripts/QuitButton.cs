@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class QuitButton : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class QuitButton : MonoBehaviour
     public GameObject buttonSmall;
     public GameObject buttonSmallBack;
     public AudioSource clickClose;
+    public AudioSource clickSound;
+    public GameObject fadeOut;
+    public GameObject yesSmall;
 
     public void QuitButtonOpen()
     {
@@ -53,5 +57,18 @@ public class QuitButton : MonoBehaviour
         clickClose.Play();
         yield return new WaitForSeconds(0.1f);
         buttonSmallBack.SetActive(false);
+    }
+    public void QuitGame()
+    {
+        StartCoroutine(QuitGameRoutine());
+    }
+    IEnumerator QuitGameRoutine()
+    {
+        yes.SetActive(false);
+        yesSmall.SetActive(true);
+        clickSound.Play();
+        fadeOut.SetActive(true);
+        yield return new WaitForSeconds(3);
+        Application.Quit();
     }
 }

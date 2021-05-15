@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayButton : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class PlayButton : MonoBehaviour
     public AudioSource clickSound;
     public AudioSource clickOpenSound;
     public AudioSource clickCloseSound;
+    public GameObject fadeOut;
+    public GameObject easyOpenSmall;
+    public GameObject normalOpenSmall;
+    public GameObject hardOpenSmall;
+
 
     public void PlayOpen()
     {
@@ -33,7 +39,6 @@ public class PlayButton : MonoBehaviour
         playSmall.SetActive(true);
         clickCloseSound.Play();
         yield return new WaitForSeconds(0.1f);
-        
         playSmall.SetActive(false);
         playClose.SetActive(true);
     }
@@ -55,5 +60,44 @@ public class PlayButton : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         playSmall.SetActive(false);
         playOpen.SetActive(true);
+    }
+    public void EasyGame()
+    {
+        StartCoroutine(EasyGameRoutine());
+    }
+    IEnumerator EasyGameRoutine()
+    {
+        easyOpen.SetActive(false);
+        easyOpenSmall.SetActive(true);
+        clickSound.Play();
+        fadeOut.SetActive(true);
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(1);
+    }
+    public void NormalGame()
+    {
+        StartCoroutine(NormalGameRoutine());
+    }
+    IEnumerator NormalGameRoutine()
+    {
+        normalOpen.SetActive(false);
+        normalOpenSmall.SetActive(true);
+        clickSound.Play();
+        fadeOut.SetActive(true);
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(2);
+    }
+    public void HardGame()
+    {
+        StartCoroutine(HardGameRoutine());
+    }
+    IEnumerator HardGameRoutine()
+    {
+        hardOpen.SetActive(false);
+        hardOpenSmall.SetActive(true);
+        clickSound.Play();
+        fadeOut.SetActive(true);
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(3);
     }
 }
