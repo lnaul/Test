@@ -23,7 +23,7 @@ public class PlayerMouseMove : MonoBehaviour
     {
         xRot += Input.GetAxis("Mouse X") * sensitivity;
         yRot += Input.GetAxis("Mouse Y") * sensitivity;
-        yRot = Mathf.Clamp(yRot, -15, 30);
+        yRot = Mathf.Clamp(yRot, -20, 30);
         xRot = Mathf.Clamp(xRot, -45, 45);
 
         //xRotCurrent = Mathf.SmoothDamp(xRotCurrent, xRot, ref curVelX, smooth);
