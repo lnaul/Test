@@ -7,18 +7,18 @@ public class Score : MonoBehaviour
 {
     public GameObject scoreBox;
     public static int currentScore;
-    public int internalScore;
+    public static int internalScore;
 
     void Update()
     {
         internalScore = currentScore;
         if (internalScore >= 10)
         {
-            scoreBox.GetComponent<Text>().text = "|" + internalScore + "|";
+            scoreBox.GetComponent<Text>().text = "0" + internalScore + "";
         }
         else
         {
-            scoreBox.GetComponent<Text>().text = "|0" + internalScore + "|";
+            scoreBox.GetComponent<Text>().text = "00" + internalScore + "";
         }
     }
 }

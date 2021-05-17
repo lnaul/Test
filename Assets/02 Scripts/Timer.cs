@@ -7,8 +7,13 @@ public class Timer : MonoBehaviour
 {
     public GameObject timerDisplay01;
     public bool isIakingTime = false;
-    public int theSeconds = 59;
+    public static int theSeconds = 59;
     public GameObject script;
+
+    void Start()
+    {
+        theSeconds = 59;
+    }
 
     void Update()
     {
@@ -24,16 +29,17 @@ public class Timer : MonoBehaviour
 
         if (theSeconds <= 9)
         {
-            timerDisplay01.GetComponent<Text>().text = "|0" + theSeconds + "|";
+            timerDisplay01.GetComponent<Text>().text = "00" + theSeconds + "";
         }
         else
         {
-            timerDisplay01.GetComponent<Text>().text = "|" + theSeconds + "|";
+            timerDisplay01.GetComponent<Text>().text = "0" + theSeconds + "";
         }
         yield return new WaitForSeconds(1);
         if (theSeconds == 0)
         {
-            timerDisplay01.GetComponent<Text>().text = "|00|";
+            timerDisplay01.GetComponent<Text>().text = "000";
+            isIakingTime = false;
             script.SetActive(false);
         }
         isIakingTime = false;

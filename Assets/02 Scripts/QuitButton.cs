@@ -68,6 +68,7 @@ public class QuitButton : MonoBehaviour
         yesSmall.SetActive(true);
         clickSound.Play();
         fadeOut.SetActive(true);
+        PlayerPrefs.GetInt("ScoreSaved", MainMenu.score);
         yield return new WaitForSeconds(3);
         Application.Quit();
     }

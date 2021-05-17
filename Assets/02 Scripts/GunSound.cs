@@ -21,7 +21,7 @@ public class GunSound : MonoBehaviour
     IEnumerator G()
     {
         soundMore.Play();
-        yield return new WaitForSeconds(1.45f);
+        yield return new WaitForSeconds(1.30f);
         StartCoroutine(G());
     }
 }
